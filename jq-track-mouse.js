@@ -76,6 +76,19 @@ if ( typeof Object.create !== 'function' ) {
 			} else {
 				this.options.text = 'Invalid text format, you can only provide string or array.';
 			}
+
+			if ( this.options.blink ) {
+				this.blinkTracker();
+			};
+		},
+
+		blinkTracker: function () {
+
+			var self = this;
+
+			this.blink = window.setInterval(function () {
+				self.el.fadeToggle();
+			}, this.options.blinkTime);
 		},
 
 		moveTracker: function ( x, y ) {
@@ -111,7 +124,9 @@ if ( typeof Object.create !== 'function' ) {
 		offset : {
 			x : 20,
 			y : 20
-		}
+		},
+		blink : false,
+		blinkTime : 600
 	};
 
 })( jQuery, window, document );
