@@ -90,16 +90,17 @@ if ( typeof Object.create !== 'function' ) {
                 this.options.text = 'Invalid text format, you can only provide string or array.';
             }
 
-            if ( ( this.options.blink === true ) && ( this.options.autoHide === false ) ) {
+            if ( this.options.blink !== false ) {
 
-                if ( isNaN( this.options.blinkTime ) ) {
-                    throw "blinkTime must be a number";
+                if ( isNaN( this.options.blink ) ) {
+                    throw "`blink` must be a number or false";
                 } else {
-
                     this.blinkTracker();
                 }
 
-            } else if ( this.options.autoHide !== false ) {
+            } 
+
+            if ( this.options.autoHide !== false ) {
 
                 if ( isNaN( this.options.autoHide ) ) {
                     throw "autoHide must be a number or false";
@@ -115,7 +116,7 @@ if ( typeof Object.create !== 'function' ) {
 
             this.blink = window.setInterval(function () {
                 self.el.fadeToggle();
-            }, this.options.blinkTime);
+            }, this.options.blink);
         },
 
         autoHideTracker: function () {
@@ -173,7 +174,6 @@ if ( typeof Object.create !== 'function' ) {
             y : 20
         },
         blink : false,
-        blinkTime : 600,
         autoHide : false
     };
 
