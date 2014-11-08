@@ -71,8 +71,19 @@ if ( typeof Object.create !== 'function' ) {
 			if ( ( typeof this.options.text == 'string' ) || ( typeof this.options.text == 'number' ) ) {
 				this.el.html( this.options.text );
 			} else if ( this.options.text instanceof Array ) {
+				
 				var text = "<ul><li>" + this.options.text.join('</li><li>') + "</li></ul>";
 				this.el.html( text );
+
+				this.el.find('ul').css({
+					"margin" : 0,
+					"padding" : "10px 30px"
+				});
+
+				this.el.find('li').css({
+					"line-height" : "20px"
+				});
+
 			} else {
 				this.options.text = 'Invalid text format, you can only provide string or array.';
 			}
