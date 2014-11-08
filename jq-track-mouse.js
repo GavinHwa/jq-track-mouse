@@ -63,7 +63,9 @@ if ( typeof Object.create !== 'function' ) {
 				'font-size' : '14px',
 				'background-color' : '#444',
 				'color' : '#eee',
-				'padding' : 10
+				'padding' : 10,
+				'line-height' : '20px',
+				'border-radius' : 0
 			});
 
 			$('body').append( this.el );
@@ -71,7 +73,7 @@ if ( typeof Object.create !== 'function' ) {
 			if ( ( typeof this.options.text == 'string' ) || ( typeof this.options.text == 'number' ) ) {
 				this.el.html( this.options.text );
 			} else if ( this.options.text instanceof Array ) {
-				
+
 				var text = "<ul><li>" + this.options.text.join('</li><li>') + "</li></ul>";
 				this.el.html( text );
 
