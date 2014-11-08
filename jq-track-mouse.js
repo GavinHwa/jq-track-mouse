@@ -90,9 +90,23 @@ if ( typeof Object.create !== 'function' ) {
                 this.options.text = 'Invalid text format, you can only provide string or array.';
             }
 
-            if ( this.options.blink ) {
-                this.blinkTracker();
-            };
+            if ( ( this.options.blink === true ) && ( this.options.autoHide === false ) ) {
+
+                if ( isNaN( this.options.blinkTime ) ) {
+                    throw "blinkTime must be a number";
+                } else {
+
+                    this.blinkTracker();
+                }
+
+            } else if ( this.options.autoHide !== false ) {
+
+                if ( isNaN( this.options.autoHide ) ) {
+                    throw "autoHide must be a number or false";
+                } else {
+                    this.autoHideTracker();
+                }
+            }
         },
 
         blinkTracker: function () {
@@ -104,6 +118,15 @@ if ( typeof Object.create !== 'function' ) {
             }, this.options.blinkTime);
         },
 
+        autoHideTracker: function () {
+
+            var self = this;
+
+            window.setTimeout(function () {
+                self.hideTracker( true );
+            }, this.options.autoHide);
+        }, 
+
         moveTracker: function ( x, y ) {
 
             this.el.css({
@@ -114,6 +137,17 @@ if ( typeof Object.create !== 'function' ) {
 
         showTracker: function () {
             this.el.show();
+        },
+
+        hideTracker: function ( doReset ) {
+
+            var self = this;
+
+            this.el.fadeOut(function() {
+                if ( doReset === true ) {
+                    self.reset();
+                };
+            });
         },
 
         reset: function () {
@@ -139,7 +173,8 @@ if ( typeof Object.create !== 'function' ) {
             y : 20
         },
         blink : false,
-        blinkTime : 600
+        blinkTime : 600,
+        autoHide : false
     };
 
     $(document).on('mousemove', function ( e ) {
