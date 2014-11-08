@@ -49,7 +49,19 @@ it will generate an unordered list and put it at the tail of the mouse. There is
 ```
 $.trackMouse("Let's see, what <strong>Bold</strong>, <em>Italics</em> and <span style='font-weight: bold; color: grey;'>my custom style</span> looks like");
 ```
-And it will all be rendered as HTML. That is pretty dang cool. Right?
+And it will all be rendered as HTML. You can also make a tracker that will auto hide itself in the time specified in mileseonds i.e.
+
+```
+$.trackMouse({
+    text : [
+        "Step 1 : Introduce the plugin script upon the page",
+        "Step 2 : Make that function call",
+        "Step 3 : Check that nifty text at the tail of the mouse"
+    ],
+    autoHide : 5000 // the tracker will auto hide after 5 seconds
+);
+```
+The tracker generated using the above code will hide it self after 5 seconds of appearing. That is pretty dang cool. Right?
 
 Also there are a set of options that you can use to modify the behavior of tooltips. Each of the options are described below:
 
@@ -57,11 +69,12 @@ Also there are a set of options that you can use to modify the behavior of toolt
 $.trackMouse.options = {
 	text : 'This will follow the mouse, no matter what', // Provide your text here (string, array, HTML)
 	offset : {
-		x : 20,   // Horizontal offset of the text from mouse
-		y : 20    // Vertical offset of the text from mouse
+		x : 20,     // Horizontal offset of the text from mouse
+		y : 20      // Vertical offset of the text from mouse
 	},
-	blink : false,  // Make the text blink or not (true, false)
-	blinkTime : 600   // Time to blin in miliseconds
+	autoHide : false,   // false if you don't want to auto hide or a number in miliseconds after which you want to auto hide the tracker
+	blink : false,      // Make the text blink or not (true, false)
+	blinkTime : 600     // Time to blin in miliseconds
 };
 ```
 
