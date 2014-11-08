@@ -11,6 +11,7 @@ Plugin has following features
     - HTML - HTML will be rendered at the tale of the mouse
 - You can make this the tracker blink and it will blink at the rate specified
 - You can reset the tracker whenever you want
+- Make the tracker autohide itself after specified time
 
 #Ideas to use it
 
@@ -77,6 +78,8 @@ $.trackMouse.options = {
 	blinkTime : 600     // Time to blin in miliseconds
 };
 ```
+#Further detail
+For further detail, please visit the <a href="http://kamranahmedse.github.io/jq-mousetracker">demo page 
 
 #How can I help?
 You can help by
