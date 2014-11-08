@@ -79,7 +79,7 @@ if ( typeof Object.create !== 'function' ) {
 
                 this.el.find('ul').css({
                     "margin" : 0,
-                    "padding" : "10px 30px"
+                    "padding" : "5px 10px"
                 });
 
                 this.el.find('li').css({
