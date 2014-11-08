@@ -80,6 +80,10 @@ $.trackMouse.options = {
 	blinkTime : 600     // Time to blin in miliseconds
 };
 ```
+
+#Todo
+- Add the ability to provide custom CSS for the tracker **box**.
+
 #Further detail
 For further detail, please visit the <a href="http://kamranahmedse.github.io/jq-mousetracker">demo page 
 
