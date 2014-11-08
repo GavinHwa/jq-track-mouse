@@ -23,14 +23,17 @@ You can use it however and wherever you want, some possibilies are:
 #How to use it
 
 Using the plugin is simple. Include the plugin script at your page. You can find get it from the repository or <a href="https://raw.githubusercontent.com/kamranahmedse/jq-track-mouse/master/jq-track-mouse.js">from here</a>.
+
 ```
 <script src="js/jq-track-mouse.js"></script
 ```
 
 Use the simple function call given below, to show the tracker.
+
 ```
 $.trackMouse("I am going to track that mouse. You can put some reminder here.");
 ```
+
 It'll put the text `I am going to track that mouse. You can put some reminder here.` at the tail of the mouse. If you provide an array i.e.
 
 ```
@@ -40,8 +43,10 @@ $.trackMouse([
     "Step 3 : Check that nifty text at the tail of the mouse"
 ]);
 ```
-...it will generate an unordered list and put it at the tail of the mouse. There is more, you can also provide your own html as the text i.e. you can do
 
+it will generate an unordered list and put it at the tail of the mouse. There is more, you can also provide your own html as the text i.e. you can do
+
+```
 $.trackMouse("Let's see, what <strong>Bold</strong>, <em>Italics</em> and <span style='font-weight: bold; color: grey;'>my custom style</span> looks like");
 ```
 And it will all be rendered as HTML. That is pretty dang cool. Right?
