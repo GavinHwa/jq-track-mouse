@@ -29,13 +29,35 @@ if ( typeof Object.create !== 'function' ) {
             if ( this.options.text ) {
                 this.generateTracker();
                 this.bindUI();
-                this.showTracker();
+
+                if ( this.options.target === false ) {
+                    this.showTracker();
+                };
             }
         },
         
         bindUI: function () {
 
             var self = this;
+
+            if ( this.options.target !== false ) {
+
+                $(document).on('mouseover', function ( e ) {
+                    if ( $( e.target ).is( $( self.options.target ) ) ) {
+                        
+                        self.showTracker();
+
+                        if ( self.options.blink !== false ) {
+                            self.blinkTracker();
+                        };
+
+                    } else {
+                        self.hideTracker();
+                        window.clearInterval( self.blink );
+                    }
+                });
+
+            };
 
             $(document).on('mousemove', function( e ){
                 $(document).trigger('trackmouse', e);
@@ -90,7 +112,9 @@ if ( typeof Object.create !== 'function' ) {
                 this.options.text = 'Invalid text format, you can only provide string or array.';
             }
 
-            if ( this.options.blink !== false ) {
+            // If tracker is to blink and target is not provided
+            // ...start blinking right away.
+            if ( ( this.options.blink !== false ) && ( this.options.target === false) ) {
 
                 if ( isNaN( this.options.blink ) ) {
                     throw "`blink` must be a number or false";
@@ -100,7 +124,9 @@ if ( typeof Object.create !== 'function' ) {
 
             } 
 
-            if ( this.options.autoHide !== false ) {
+            // If the tracker is meant to autohide
+            // ( Allow it only if the target wasn't provided )
+            if ( ( this.options.autoHide !== false ) && ( this.options.target === false ) ) {
 
                 if ( isNaN( this.options.autoHide ) ) {
                     throw "autoHide must be a number or false";
@@ -144,11 +170,11 @@ if ( typeof Object.create !== 'function' ) {
 
             var self = this;
 
-            this.el.fadeOut(function() {
-                if ( doReset === true ) {
-                    self.reset();
-                };
-            });
+            this.el.hide();
+
+            if ( doReset === true ) {
+                self.reset();
+            };
         },
 
         reset: function () {
@@ -174,7 +200,8 @@ if ( typeof Object.create !== 'function' ) {
             y : 20
         },
         blink : false,
-        autoHide : false
+        autoHide : false,
+        target : false
     };
 
     $(document).on('mousemove', function ( e ) {
