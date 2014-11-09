@@ -14,18 +14,25 @@ Plugin has following features
 - You can make this the tracker blink and it will blink at the rate specified
 - You can reset the tracker whenever you want
 - Make the tracker autohide itself after specified time
+- Make the tracker appear only upon some specified element
 
 #Ideas to use it
 
-You can use it however and wherever you want, some possibilies are:
+You can use it however and wherever you want. If you chose to show the tracker on whole page, some possibilities are:
 
   - That tracking text can act as a constant reminder to the user for something. For example let's say if there is some necessary action pending for the user, you can put this tracker to the mouse and it will keep reminding the user about that pending action
   - In case of some step by step action, you can put the tracker at mouse demonstrating the details of each of the step
   - After a user logs in, you can show a list of TODO items at the tail of mouse and hide it after some time.
+
+If you chose the option to show the tracker upon some specified element, some possibilities can be:
+
+  - Show tracker text upon any element, lets say an image, describing about that element.
+
+The only limit is your imagination, literally ;)
   
 #How to use it
 
-Using the plugin is simple. Include the plugin script at your page. You can find get it from the repository or <a href="https://raw.githubusercontent.com/kamranahmedse/jq-track-mouse/master/jq-track-mouse.js">from here</a>.
+Using the plugin is simple. Include the plugin script at your page. You can find get it from the repository or <a href="https://raw.githubusercontent.com/kamranahmedse/jq-track-mouse/master/jq-track-mouse.js">from here</a> or the <a href="https://raw.githubusercontent.com/kamranahmedse/jq-track-mouse/master/jq-track-mouse.min.js">minified version here</a>.
 
 ```
 <script src="js/jq-track-mouse.js"></script
@@ -66,6 +73,24 @@ $.trackMouse({
 ```
 The tracker generated using the above code will hide it self after 5 seconds of appearing. That is pretty dang cool. Right?
 
+Above described usage will make the tracker follow the mouse upon whole page. However, if you don't want the tracker to follow the mouse everywhere and on some specific element only, you can also provide a target i.e.
+
+```
+$.trackMouse({
+    text : "I will follow this mouse as long as it is in my bounds, after that I won't.",
+    target : '#target' // Element upon which the tracker has to appear
+});
+```
+You can also use the blinking with target as well i.e. make the tracker show upon the target only and when it is being shown upon the target, make it blink as well
+
+```
+$.trackMouse({
+    text : "I will follow this mouse as long as it is in my bounds, after that I won't.",
+    target : '#target', // Element upon which the tracker has to appear
+    blink : 600
+});
+```
+
 Also there are a set of options that you can use to modify the behavior of tooltips. Each of the options are described below:
 
 ```
@@ -76,10 +101,11 @@ $.trackMouse.options = {
 		y : 20      // Vertical offset of the text from mouse
 	},
 	autoHide : false,   // false if you don't want to auto hide or a number in miliseconds after which you want to auto hide the tracker
-	blink : false,      // Make the text blink or not (true, false)
-	blinkTime : 600     // Time to blin in miliseconds
+	blink : 600,      // Time to blink in miliseconds or false if blinking is not required
+    target : '#someTarget' // So that tracker may appear only upon the target
 };
 ```
+**Note** that, all of the above options can be used together to get whatever effect you want, except for `autoHide` you can't use it when you have specified the `target`
 
 #Todo
 - Add the ability to provide custom CSS for the tracker **box**.
