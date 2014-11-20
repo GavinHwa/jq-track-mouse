@@ -1,4 +1,4 @@
-Track Mouse
+<Track Mouse
 ==============
 Track mouse is a simple jquery plugin that lets you place some text at the tail of the mouse and that text will follow the mouse wherever it goes on the page.
 
@@ -35,7 +35,7 @@ The only limit is your imagination, literally ;)
 Using the plugin is simple. Include the plugin script at your page. You can find get it from the repository or <a href="https://raw.githubusercontent.com/kamranahmedse/jq-track-mouse/master/jq-track-mouse.js">from here</a> or the <a href="https://raw.githubusercontent.com/kamranahmedse/jq-track-mouse/master/jq-track-mouse.min.js">minified version here</a>.
 
 ```
-<script src="js/jq-track-mouse.js"></script
+<script src="js/jq-track-mouse.js"></script>
 ```
 
 Use the simple function call given below, to show the tracker.
@@ -111,7 +111,7 @@ $.trackMouse.options = {
 - Add the ability to provide custom CSS for the tracker **box**.
 
 #Further detail
-For further detail, please visit the <a href="http://kamranahmedse.github.io/jq-mousetracker">demo page 
+For further detail, please visit the <a href="http://kdemos.github.io/jq-mousetracker">demo page 
 
 #How can I help?
 You can help by
